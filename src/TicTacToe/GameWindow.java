@@ -63,7 +63,7 @@ public class GameWindow extends JFrame {
                     public void mouseClicked(MouseEvent e) {
                         int row = -1, col = -1;
 
-                        // Найти координаты кнопки
+                        // Найти координаты button
                         for (int i = 0; i < 3; i++) {
                             for (int j = 0; j < 3; j++) {
                                 if (buttons[i][j] == e.getSource()) {
