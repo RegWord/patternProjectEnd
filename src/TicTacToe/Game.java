@@ -11,6 +11,7 @@ public class Game {
     private Player currentPlayer;
     private Player userPlayer;
     private Player botPlayer;
+    private boolean playWithBot;
     private List<Player> players;
     private WinStrategy winStrategy;
     private int playerXWins;
@@ -31,12 +32,21 @@ public class Game {
         return instance;
     }
 
-    public void initializePlayers(char userSymbol) {
+    public void initializePlayers(char userSymbol, boolean playWithBot) {
+        this.playWithBot = playWithBot;
         userPlayer = new Player(userSymbol);
-        botPlayer = new Player(userSymbol == 'X' ? 'O' : 'X');
+        if (playWithBot) {
+            botPlayer = new Player(userSymbol == 'X' ? 'O' : 'X');
+        } else {
+            botPlayer = new Player(userSymbol == 'X' ? 'O' : 'X');
+        }
         players.add(userPlayer);
         players.add(botPlayer);
         currentPlayer = userPlayer;
+    }
+
+    public boolean isPlayWithBot() {
+        return playWithBot;
     }
 
     public void switchPlayer() {
@@ -96,5 +106,6 @@ public class Game {
         move.execute();
     }
 }
+
 
 
